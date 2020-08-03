@@ -29,7 +29,7 @@ namespace AlloyDemo.Business
 
         private EventHandler<ContentEventArgs> _eventHandler;
 
-        public VisitorGroupKpi()
+        public VisitorGroupKpi() : base()
         {
             _visitorGroupRepository = _servicelocator.GetInstance<IVisitorGroupRepository>();
             _visitorGroupRoleRepository = _servicelocator.GetInstance<IVisitorGroupRoleRepository>();
@@ -87,7 +87,6 @@ namespace AlloyDemo.Business
 
             if (current != null && val != null && TestContentGuid == val.Content.ContentGuid)
             {
-                //VisitorGroupRole role;
                 if (_visitorGroupRoleRepository.TryGetRole(SelectedVisitorGroup, out var role))
                 {
                     result.HasConverted = role.IsMatch(current.User, new HttpContextWrapper(current));
